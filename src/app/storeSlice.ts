@@ -41,14 +41,13 @@ export const storeSlice = createSlice({
         const jsonHistory = JSON.parse(history);
 
         jsonHistory.push({
-          id: (state.data.length * Math.random()) / Math.random(),
+          id: ((state.data.length + 1) * Math.random()) / Math.random(),
           name: state.name,
           message: action.payload,
         });
         localStorage.setItem(state.chat, JSON.stringify(jsonHistory));
         state.data = jsonHistory;
       }
-      sessionStorage.setItem(state.name, JSON.stringify(state.data));
     },
   },
 });

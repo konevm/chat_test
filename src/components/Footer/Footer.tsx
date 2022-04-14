@@ -22,9 +22,17 @@ const Footer: React.FC = () => {
 
   return (
     <div className="footer">
+      <p style={postMessage !== "" ? { visibility: "hidden" } : {}}>
+        Say somthing
+      </p>
       <form action="" method="post" onSubmit={onSubmit}>
         <input type="text" value={postMessage} onChange={onInputChange} />
-        <button type="submit">{nameOfUser !== "" ? "Post" : "Set name"}</button>
+        <button
+          type="submit"
+          style={postMessage === "" ? { visibility: "hidden" } : {}}
+        >
+          {nameOfUser !== "" ? "Post" : "Set name"}
+        </button>
       </form>
     </div>
   );
