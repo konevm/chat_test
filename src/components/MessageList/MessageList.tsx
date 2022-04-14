@@ -6,10 +6,10 @@ import PostMessage from "../PostMessage/PostMessage";
 const MessageList: React.FC = () => {
   const [messagesSlice, setMessagesSlice] = useState<number>(25);
   const stateData = useAppSelector((store) => store.data);
-  const allMessages = stateData.data;
   const messagesEndRef = useRef<HTMLDivElement>(null);
-  const [messagesFromLocal, setMessagesFromLocal] =
-    useState<IStoreMessages[]>(allMessages);
+  const [messagesFromLocal, setMessagesFromLocal] = useState<IStoreMessages[]>(
+    stateData.data
+  );
 
   const GetItemsFromLocal = () => {
     const history = localStorage.getItem(stateData.chat);
@@ -30,7 +30,7 @@ const MessageList: React.FC = () => {
     messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
   };
 
-  if (stateData.name !== "") {
+  if (stateData.name) {
     setInterval(GetItemsFromLocal, 1000);
   }
 

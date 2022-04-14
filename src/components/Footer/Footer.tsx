@@ -23,16 +23,16 @@ const Footer: React.FC = () => {
 
   return (
     <div className="footer">
-      <p style={postMessage !== "" ? { visibility: "hidden" } : {}}>
-        {nameOfUser !== "" ? "Say somthing" : "Set name"}
+      <p style={postMessage ? { visibility: "hidden" } : {}}>
+        {nameOfUser !== "" ? "Say something" : "Set name"}
       </p>
       <form onSubmit={onSubmit}>
         <input type="text" value={postMessage} onChange={onInputChange} />
         <button
           type="submit"
-          style={postMessage === "" ? { visibility: "hidden" } : {}}
+          style={!postMessage ? { visibility: "hidden" } : {}}
         >
-          {nameOfUser !== "" ? "Post" : "Set name"}
+          {nameOfUser ? "Post" : "Set name"}
         </button>
       </form>
     </div>
