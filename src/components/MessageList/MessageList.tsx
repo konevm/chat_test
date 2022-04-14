@@ -7,7 +7,7 @@ const MessageList: React.FC = () => {
   const [messagesSlice, setMessagesSlice] = useState<number>(25);
   const stateData = useAppSelector((store) => store.data);
   const allMessages = stateData.data;
-
+  const messagesEndRef = useRef<HTMLDivElement>(null);
   const [messagesFromLocal, setMessagesFromLocal] =
     useState<IStoreMessages[]>(allMessages);
 
@@ -19,22 +19,23 @@ const MessageList: React.FC = () => {
     }
   };
 
-  if (stateData.name !== "") {
-    setInterval(GetItemsFromLocal, 1000);
-  }
-
   const getMessagesByScroll = (e: React.UIEvent<HTMLElement>) => {
     const target = e.target as Element;
     if (target.scrollTop === 0) {
       setMessagesSlice(messagesSlice + 5);
     }
   };
-  const messagesEndRef = useRef<HTMLDivElement>(null);
 
   const scrollToBottom = () => {
     messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
   };
+
+  if (stateData.name !== "") {
+    setInterval(GetItemsFromLocal, 1000);
+  }
+
   useEffect(scrollToBottom, [messagesFromLocal.length]);
+
   return (
     <div className="message__list">
       <div className="messages" onScroll={getMessagesByScroll}>

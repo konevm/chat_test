@@ -16,6 +16,7 @@ const Footer: React.FC = () => {
     }
     setPostMessage("");
   };
+
   const onInputChange = ({ target }: React.ChangeEvent<HTMLInputElement>) => {
     setPostMessage(target.value);
   };
