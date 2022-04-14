@@ -1,7 +1,7 @@
 import React, { useState, useRef, useEffect } from "react";
 import { useAppSelector } from "../../app/hooks";
-import PostMessage from "../PostMessage/PostMessage";
 import { IStoreMessages } from "../../app/storeSlice";
+import PostMessage from "../PostMessage/PostMessage";
 
 const MessageList: React.FC = () => {
   const [messagesSlice, setMessagesSlice] = useState<number>(25);

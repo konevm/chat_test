@@ -3,9 +3,9 @@ import { useAppSelector, useAppDispatch } from "../../app/hooks";
 import { setMessage, setHistory } from "../../app/storeSlice";
 
 const Footer: React.FC = () => {
+  const [postMessage, setPostMessage] = useState<string>("");
   const nameOfUser = useAppSelector((state) => state.data.name);
   const dispatch = useAppDispatch();
-  const [postMessage, setPostMessage] = useState<string>("");
 
   const onSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -26,7 +26,7 @@ const Footer: React.FC = () => {
       <p style={postMessage !== "" ? { visibility: "hidden" } : {}}>
         {nameOfUser !== "" ? "Say somthing" : "Set name"}
       </p>
-      <form action="" method="post" onSubmit={onSubmit}>
+      <form onSubmit={onSubmit}>
         <input type="text" value={postMessage} onChange={onInputChange} />
         <button
           type="submit"
