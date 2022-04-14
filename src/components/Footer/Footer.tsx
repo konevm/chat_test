@@ -11,7 +11,7 @@ const Footer: React.FC = () => {
     e.preventDefault();
     if (nameOfUser === "") {
       dispatch(setHistory(postMessage));
-    } else {
+    } else if (postMessage !== "") {
       dispatch(setMessage(postMessage));
     }
     setPostMessage("");
@@ -24,7 +24,7 @@ const Footer: React.FC = () => {
   return (
     <div className="footer">
       <p style={postMessage !== "" ? { visibility: "hidden" } : {}}>
-        Say somthing
+        {nameOfUser !== "" ? "Say somthing" : "Set name"}
       </p>
       <form action="" method="post" onSubmit={onSubmit}>
         <input type="text" value={postMessage} onChange={onInputChange} />
